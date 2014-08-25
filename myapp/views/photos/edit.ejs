@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+</head>
+<body>
+<h1><%= title %></h1>
+
+<form action="/create" method="post" accept-charset="utf-8">
+    <input type="text" name="content"/>
+</form>
+
+<% photos.forEach( function(photo){ %>
+<p>
+    <span>
+        <% if( photo._id == current ){ %>
+        <form action="/update/<%= photo._id %>" method="post" accept-charset="utf-8">
+            <input type="text" name="content" value="<%= photo.name %>"/>
+        </form>
+        <% }else{ %>
+        <a href="/edit/<%= photo._id %>" title="Update this todo item"><%= photo.name %></a>
+        <% } %>
+    </span>
+
+</p>
+<% }); %>
